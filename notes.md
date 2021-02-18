@@ -47,6 +47,7 @@
 
     #### Attrubutes: 
     * name: name
-    * meal_type: string
+   
+   
 
 
