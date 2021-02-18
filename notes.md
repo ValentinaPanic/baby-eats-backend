@@ -38,7 +38,7 @@
 
 
     #### Attrubutes: 
-    * date: date
+    
     * meal_type: string
 
 ### _FOOD_
