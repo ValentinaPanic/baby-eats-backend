@@ -13,7 +13,7 @@
 ### _WEEK_
 
 * belongs_to :user
-* has_many :days, through: :weeks
+* has_many :days
 * has_many :meals, through: :days
 
     #### Attrubutes: 
