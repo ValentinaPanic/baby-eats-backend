@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get "/login", to: "sessions#create"
+  post "/login", to: "sessions#create"
+  get "/get_current_user", to: "sessions#get_current_user"
+
   resources :foods
   resources :meals
   resources :days
