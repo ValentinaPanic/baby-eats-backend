@@ -9,3 +9,8 @@
 User.create(name: "Valentina", username: "valentinaP", password: "password")
 User.create(name: "Srdan", username: "srdan", password: "password")
 User.create(name: "Vuk", username: "vuk", password: "password")
+
+week = Week.create(user_id: 3, notes: "Working on this app")
+day= Day.create(date: Date.today, week_id: week.id)
+meal = Meal.create(meal_type: "Lunch", day_id: day.id)
+food = Food.create(name: "Avocado", meal_id: 1)

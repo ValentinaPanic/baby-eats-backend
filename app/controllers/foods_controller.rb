@@ -5,7 +5,7 @@ class FoodsController < ApplicationController
   def index
     @foods = Food.all
 
-    render json: @foods
+    render json: FoodsSerializer.new(@foods)
   end
 
   # GET /foods/1

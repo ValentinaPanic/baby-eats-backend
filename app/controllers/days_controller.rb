@@ -5,7 +5,7 @@ class DaysController < ApplicationController
   def index
     @days = Day.all
 
-    render json: @days
+    render json: DaySerializer.new(@days)
   end
 
   # GET /days/1

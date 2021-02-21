@@ -5,7 +5,7 @@ class WeeksController < ApplicationController
   def index
     @weeks = Week.all
 
-    render json: @weeks
+    render json: WeekSerializer.new(@weeks)
   end
 
   # GET /weeks/1
