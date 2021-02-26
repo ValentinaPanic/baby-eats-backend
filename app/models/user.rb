@@ -1,9 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
     
-    has_many :weeks
-    has_many :days, through: :weeks
-    has_many :meals, through: :days
+    has_many :days
+    has_many :foods, through: :days
     
     
 end
