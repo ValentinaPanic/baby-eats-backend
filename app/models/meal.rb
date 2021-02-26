@@ -1,6 +1,6 @@
  class Meal < ApplicationRecord
     
-    belongs_to :day
-    has_many :foods
+    # belongs_to :day
+    # has_many :foods
 
 end
