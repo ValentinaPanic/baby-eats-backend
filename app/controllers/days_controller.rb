@@ -15,13 +15,12 @@ class DaysController < ApplicationController
 
   # POST /days
   def create
-    byebug
-    @day = Day.new(day_params)
     
+    @day = Day.new(day_params)
+ 
     if @day.save
-      @breakfast = @day.meals.build(meal_type: "Breakfast")
-      @breakfast.save
-
+      @food = Food.find_or_create_by(name: params[:day][:foods][:name])
+      @day.foods << @food
       render json: DaySerializer.new(@day), status: :created
     else
       render json: @day.errors, status: :unprocessable_entity
