@@ -18,7 +18,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
 
     if @meal.save
-      render json: @meal, status: :created, location: @meal
+      render json: MealsSerializer.new(@meal), status: :created
     else
       render json: @meal.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class MealsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def meal_params
-      params.require(:meal).permit(:type, :day_id)
+      params.require(:meal).permit(:meal_type, :day_id)
     end
 end

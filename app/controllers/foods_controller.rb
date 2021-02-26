@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
 
     if @food.save
-      render json: @food, status: :created, location: @food
+      render json: @food, status: :created
     else
       render json: @food.errors, status: :unprocessable_entity
     end

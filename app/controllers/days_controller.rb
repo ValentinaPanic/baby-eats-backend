@@ -15,10 +15,14 @@ class DaysController < ApplicationController
 
   # POST /days
   def create
+    byebug
     @day = Day.new(day_params)
-
+    
     if @day.save
-      render json: @day, status: :created, location: @day
+      @breakfast = @day.meals.build(meal_type: "Breakfast")
+      @breakfast.save
+
+      render json: DaySerializer.new(@day), status: :created
     else
       render json: @day.errors, status: :unprocessable_entity
     end
@@ -46,6 +50,6 @@ class DaysController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def day_params
-      params.require(:day).permit(:date, :week_id)
+      params.require(:day).permit(:date, :meal_type, :user_id)
     end
 end

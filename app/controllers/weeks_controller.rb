@@ -3,7 +3,7 @@ class WeeksController < ApplicationController
 
   # GET /weeks
   def index
-    @weeks = Week.all
+    @weeks = current_user.weeks
 
     render json: WeekSerializer.new(@weeks)
   end
@@ -18,7 +18,7 @@ class WeeksController < ApplicationController
     @week = Week.new(week_params)
 
     if @week.save
-      render json: @week, status: :created, location: @week
+      render json: @week, status: :created
     else
       render json: @week.errors, status: :unprocessable_entity
     end

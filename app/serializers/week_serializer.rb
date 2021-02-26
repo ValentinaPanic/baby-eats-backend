@@ -1,5 +1,5 @@
 class WeekSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :notes, :days, :user, :meals, :foods
+  # attributes :notes, :days, :meals, :foods
  
 end
