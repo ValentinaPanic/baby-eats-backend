@@ -10,25 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_042420) do
+ActiveRecord::Schema.define(version: 2021_02_18_221521) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
-    t.integer "week_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.string "meal_type"
   end
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
-    t.integer "day_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "meals", force: :cascade do |t|
     t.string "meal_type"
     t.integer "day_id"
     t.datetime "created_at", precision: 6, null: false
@@ -39,13 +31,6 @@ ActiveRecord::Schema.define(version: 2021_02_26_042420) do
     t.string "name"
     t.string "username"
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "weeks", force: :cascade do |t|
-    t.text "notes"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
