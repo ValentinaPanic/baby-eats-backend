@@ -10,7 +10,7 @@ class DaysController < ApplicationController
 
   # GET /days/1
   def show
-    render json: @day
+    render json: DaySerializer.new(@day)
   end
 
   # POST /days
