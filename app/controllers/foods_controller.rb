@@ -10,7 +10,7 @@ class FoodsController < ApplicationController
 
   # GET /foods/1
   def show
-    render json: @food
+    render json: FoodsSerializer.new(@food)
   end
 
   # POST /foods
@@ -27,7 +27,7 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1
   def update
     if @food.update(food_params)
-      render json: @food
+      render json: FoodsSerializer.new(@food)
     else
       render json: @food.errors, status: :unprocessable_entity
     end
