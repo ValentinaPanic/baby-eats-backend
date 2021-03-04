@@ -31,7 +31,7 @@ class DaysController < ApplicationController
   # PATCH/PUT /days/1
   def update
     if @day.update(day_params)
-      render json: @day
+      render json:DaySerializer.new(@day)
     else
       render json: @day.errors, status: :unprocessable_entity
     end
@@ -40,6 +40,7 @@ class DaysController < ApplicationController
   # DELETE /days/1
   def destroy
     @day.destroy
+    render json: {message: "Delete was successful"}
   end
 
   private
