@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   delete "/logout", to: "sessions#destroy"
   get "/get_current_user", to: "sessions#get_current_user"
-
+  
+  resources :lists
   resources :foods
   resources :days do
     resources :foods
