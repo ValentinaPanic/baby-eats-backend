@@ -7,7 +7,6 @@ class FoodsController < ApplicationController
 
     render json: FoodsSerializer.new(@foods)
   end
-
   # GET /foods/1
   def show
     render json: FoodsSerializer.new(@food)

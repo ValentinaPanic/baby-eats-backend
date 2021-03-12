@@ -6,18 +6,11 @@ class DaysController < ApplicationController
     if logged_in?
     @days = current_user.days
     render json: DaySerializer.new(@days)
-  else
+    else
     render json: {
       error: "You must be logged in to see the meals"
     }
-  end
-    
-     
-  end
-
-  # GET /days/1
-  def show
-    render json: DaySerializer.new(@day)
+    end  
   end
 
   # POST /days
