@@ -13,15 +13,15 @@ class FoodsController < ApplicationController
   end
 
   # POST /foods
-  def create
-    @food = Food.new(food_params)
-
-    if @food.save
-      render json: FoodsSerializer.new(@food), status: :created
-    else
-      render json: @food.errors, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @food = Food.new(food_params)
+  #   byebug
+  #   if @food.save
+  #     render json: FoodsSerializer.new(@food), status: :created
+  #   else
+  #     render json: @food.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /foods/1
   def update
@@ -35,8 +35,8 @@ class FoodsController < ApplicationController
   # DELETE /foods/1
   def destroy
     @food.destroy
+    render json: {message: "Delete was successful"}
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food

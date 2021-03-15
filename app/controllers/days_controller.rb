@@ -12,20 +12,29 @@ class DaysController < ApplicationController
     }
     end  
   end
-
+  def show
+    render json: DaySerializer.new(@day)
+  end
   # POST /days
   def create
-    
-    @day = Day.new(day_params)
- 
-    if @day.save
-      @food = Food.find_or_create_by(name: params[:day][:foods][:name], meal_type: params[:day][:foods][:meal_type])
-      @day.foods << @food
-    
-      render json: DaySerializer.new(@day), status: :created
+    if logged_in?
+      @day = current_user.days.find_or_create_by(date: params[:day][:date])
+      
+        if @day.save
+          
+          @food = @day.foods.build(name: params[:day][:foods][:name], meal_type: params[:day][:foods][:meal_type])
+          @food.save
+        #  byebug
+          render json: DaySerializer.new(@day), status: :created
+        else
+          render json: @day.errors, status: :unprocessable_entity
+        end
     else
-      render json: @day.errors, status: :unprocessable_entity
-    end
+      render json: {
+        error: "You must be logged in to create meals "
+      }
+      end
+
   end
 
   # PATCH/PUT /days/1
@@ -51,6 +60,6 @@ class DaysController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def day_params
-      params.require(:day).permit(:date, :user_id, food_ids: [])
+      params.require(:day).permit(:date, :user_id, foods: [:name, :meal_type])
     end
 end
